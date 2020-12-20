@@ -62,16 +62,22 @@ void Particle::setAcceleration(float p_x, float p_y, float p_z)
 
 void Particle::checkForCollision(Particle &particle)
 {
-    float dx = position.x - particle.position.x;
-    float dy = position.y - particle.position.y;
-    float dz = position.z - particle.position.z;
+    float dx = particle.position.x - position.x;
+    float dy = particle.position.y - position.y;
+    float dz = particle.position.z - position.z;
+
+    Vector3 radius_vector;
+    radius_vector.x = dx;
+    radius_vector.y = dy;
+    radius_vector.z = dz;
 
     float distance = sqrt(dx * dx + dy * dy + dz * dz);
 
     if (distance <= particle.radius + radius)
     {
-        float angle = acos((dx * velocity.x + dy * velocity.y + dz * velocity.z) /
-                           sqrt((dx + dy + dz) * (velocity.x + velocity.y + velocity.z)));
-        Vector3 velocity_center = velocity * cos(angle);
+        Vector3 velocity_normal = velocity - velocity.vectorProjection(radius_vector);
+        radius_vector.invert();
+        Vector3 velocity_center = particle.velocity.vectorProjection(radius_vector);
+        velocity = velocity_normal + velocity_center;
     }
 }

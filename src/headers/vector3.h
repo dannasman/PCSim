@@ -21,6 +21,7 @@ public:
     float scalarProduct(const Vector3 &) const;
     Vector3 vectorProduct(const Vector3 &) const;
     void clear();
+    Vector3 vectorProjection(const Vector3 &) const;
 
     void operator*=(const float value)
     {

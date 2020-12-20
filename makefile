@@ -7,7 +7,7 @@ FLAGS	 = -g -c -Wall
 LFLAGS	 = 
 
 all: $(OBJS)
-	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS) && python3 src/plot.py
 
 vector3.o: src/vector3.cpp
 	$(CC) $(FLAGS) src/vector3.cpp 
@@ -17,7 +17,5 @@ main.o: src/main.cpp
 
 particle.o: src/particle.cpp
 	$(CC) $(FLAGS) src/particle.cpp 
-
-
 clean:
 	rm -f $(OBJS) $(OUT)

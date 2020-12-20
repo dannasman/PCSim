@@ -61,6 +61,12 @@ Vector3 Vector3::vectorProduct(const Vector3 &vector) const
     return Vector3(y * vector.z - z * vector.y, z * vector.x - x * vector.z, x * vector.y - y * vector.x);
 }
 
+Vector3 Vector3::vectorProjection(const Vector3 &vector) const
+{
+    float scalar = (vector.x * x + vector.y * y + vector.z * z) / (vector.x * vector.x + vector.y * vector.y + vector.z * vector.z);
+    return Vector3(scalar * vector.x, scalar * vector.y, scalar * vector.z);
+}
+
 void Vector3::clear()
 {
     x = 0;
