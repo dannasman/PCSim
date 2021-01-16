@@ -7,7 +7,7 @@ FLAGS	 = -g -c -Wall
 LFLAGS	 = 
 
 all: $(OBJS)
-	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS) && python3 src/plot.py
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS) && ./a.out && python3 src/plot.py
 
 vector3.o: src/vector3.cpp
 	$(CC) $(FLAGS) src/vector3.cpp 

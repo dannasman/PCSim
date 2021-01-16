@@ -75,9 +75,10 @@ void Particle::checkForCollision(Particle &particle)
 
     if (distance <= particle.radius + radius)
     {
-        Vector3 velocity_normal = velocity - velocity.vectorProjection(radius_vector);
-        radius_vector.invert();
-        Vector3 velocity_center = particle.velocity.vectorProjection(radius_vector);
-        velocity = velocity_normal + velocity_center;
+        Vector3 normal_vector = (position - particle.position) * (1 / ((position - particle.position).magnitude()));
+        Vector3 velocity_relative = velocity - particle.velocity;
+        float f = (velocity_relative * normal_vector);
+        Vector3 velocity_normal = normal_vector * (velocity_relative * normal_vector);
+        velocity = velocity - velocity_normal * (2 / (particle.inverseMass * (1 / inverseMass + 1 / particle.inverseMass)));
     }
 }
