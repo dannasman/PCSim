@@ -1,3 +1,3 @@
 # PCSim
 
-Engine for simulating 3D collisions between particles. Very unfinished.
+Engine for simulating 3D collisions between particles.
