@@ -1,13 +1,13 @@
 OBJS	= vector3.o main.o particle.o
 SOURCE	= vector3.cpp main.cpp particle.cpp
 HEADER	= 
-OUT	= a.out
+OUT	= main
 CC	 = g++
 FLAGS	 = -g -c -Wall
 LFLAGS	 = 
 
 all: $(OBJS)
-	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS) && ./a.out && python3 src/plot.py
+	$(CC) -g $(OBJS) -o $(OUT) $(LFLAGS)
 
 vector3.o: src/vector3.cpp
 	$(CC) $(FLAGS) src/vector3.cpp 

@@ -64,5 +64,7 @@ int main()
     ParticleData2.close();
     ParticleData3.close();
 
+    cout << "simulation completed successfully\n";
+
     return 0;
 }
